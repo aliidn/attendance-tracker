@@ -2,13 +2,17 @@
 
 A Python-based automation tool designed to manage attendance for 20,000 students across multiple subjects. This project demonstrates efficient data handling with Pandas and automated threshold monitoring.
 
-## 🚀 Features
-* **Scalable Data Processing:** Handles 20,000+ records using optimized Pandas operations (`.loc`, `.isin`).
-* **Automated Data Transformation:** Dynamically generates student email addresses using Lambda functions.
-* **Threshold Logic:** * **2 Leaves:** Triggers a "Warning" status.
-  * **3+ Leaves:** Triggers an "Attendance Alert" for students and staff.
-* **Persistent Storage:** Automatically updates and saves records to CSV.
-
+## 🚀 Key Features
+* **Vectorized Data Updates:** Uses Pandas `.loc` and `.isin()` to update thousands of records simultaneously, ensuring high performance regardless of dataset size.
+* **Robust Input Validation:**
+    * **Type Safety:** Uses `try/except` blocks to handle non-numeric inputs for subjects.
+    * **ID Verification:** Uses list comprehensions with `.isdigit()` and `.values` checks to filter out typos or non-existent Student IDs before processing.
+* **Modular Notification System:** Features a dedicated `send_email` function that separates attendance logic from the notification process.
+* **Dynamic Email Generation:** Automatically generates a `mailid` column based on Student IDs using Lambda functions.
+* **Threshold Monitoring:**
+    * **2 Leaves:** Triggers a "warning" status.
+    * **3+ Leaves:** Triggers an "alert" status for both the student and administrative staff.
+ 
 ## 📊 Dataset Structure
 The system utilizes a central `Attendance1.csv` with the following schema:
 | Student ID | CI | python | DM | mailid |
